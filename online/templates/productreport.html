@@ -1,0 +1,41 @@
+{% extends 'basic.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Product Report{% endblock %}
+{% block body %}
+
+    <div class="container">
+        <h2>Product Report</h2>
+
+        <div class="mb-3">
+            <form action="/online/report/" method="post">{% csrf_token %}
+                <div class="form-group">
+                    <label for="gender1" class="col-sm-2 control-label">Select Report:</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="select_report" id="select_report">
+                            <option value="P">Product</option>
+                            <option value="S">Shipping</option>
+                            <option value="O">Order</option>
+
+
+                        </select>
+
+                    </div>
+                    <label for="name" class="form-label">Product Name</label>
+                    <input type="text" class="form-control" name="product_name" id="product_name"
+                           placeholder="Enter Your Product Name">
+                </div>
+                {{ form|crispy }}
+                <div class="mb-3">
+                    <label for="name" class="form-label">User E-mail</label>
+                    <input type="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" class="form-control" name="user_email" id="user_email"
+                           placeholder="Enter Your Email" required="">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Type your Report Message</label>
+                    <textarea class="form-control" name="report_message" id="Message" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+
+{% endblock %}

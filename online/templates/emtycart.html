@@ -1,0 +1,13 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block body %}
+    <div class="container my-5">
+        <di class="row">
+            <h3 class="text-center">You Have no product in Your Cart</h3>
+            <div class="text-center">
+                <img src="{% static 'online/images/emtycart.png' %}" alt="" class="img-fluid img-thumbnail w-25">
+            </div>
+        </di>
+    </div>
+{% endblock body %}

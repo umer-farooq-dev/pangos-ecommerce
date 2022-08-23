@@ -1,0 +1,1365 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-6jHF7Z3XI3fF4XZixAuSu0gGKrXwoX/w3uFPxC56OtjChio7wtTGJWRW53Nhx6Ev" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+
+    <!--Owl Carousel CSS-->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+    <!--FontAwesome CSS-->
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>Traditional Jewellery | {% block title %} {% endblock title %} </title>
+
+</head>
+<!--Nav bar-->
+
+<body>
+<div class="bullet-head">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-12 bullet">
+                <i class="fa-light fa-at"></i>
+                <b>hej@pangos.dk</b>
+            </div>
+            <div class="col-md-4 col-xs-12 bullet stars">
+                <i class="fa-light fa-star"></i>
+                <b>Fremragende, 5/5 stjerner</b>
+            </div>
+            <div class="col-md-4 bullet col-xs-12">
+                <div class="float-md-right">
+                    <i class="fa-light fa-truck-fast"></i>
+                    <b>2 - 4 hverdages levering</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% comment %} <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/online">Traditional Jewellery</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-item nav-link" aria-current="page" href="{% url 'report' %}">Report</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="electronicsDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
+                        <li><a class="dropdown-item" href="{% url 'ring' %}">Ring</a></li>
+                        <li><a class="dropdown-item" href="{% url 'necklace' %}">Necklace</a></li>
+                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="/online/about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'orders' %}">Tracking System</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" aria-current="page" href="/online/contact">Contact Us</a>
+                </li>
+
+                </li>
+            </ul>
+            <form class="d-flex">
+                <a class="navbar-brand" href="/admin">Login As Admin</a>
+
+            </form>
+            <div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item dropdown mx-2">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ request.user }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                                <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
+                                <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="{% url 'showcart' %}" class="nav-link text-white">Bags:<span class="badge bg-danger">{{ totalitem }}</span></a>
+                        </li>
+
+
+                    {% else %}
+                        <li class="nav-item mx-2">
+                            <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="{% url 'customerregistration' %}" class="nav-link text-white">Registration</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav> {% endcomment %}
+
+<header>
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-md-2 col-4">
+                <a href="https://pangos.dk/">
+                    <img src="https://pangos.dk/assets/images/pangos-logo.png">
+                </a>
+            </div>
+
+            <div class="col-md-5 d-none d-sm-block" style="padding-top: 5px">
+                <ul class="menu">
+                    <li>
+                        <a href="https://pangos.dk/kategori/babyer-og-boern" class="smegam" data-id="28"><font
+                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">Babies and
+                            Children</font></font></a>
+                    </li>
+                    <li>
+                        <a href="https://pangos.dk/kategori/bolighave" class="smegam" data-id="733"><font
+                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">Housing &amp;
+                            garden</font></font></a>
+                    </li>
+                    <li>
+                        <a href="https://pangos.dk/kategori/kaeledyr" class="smegam" data-id="458"><font
+                                style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">Pet</font></font></a>
+                    </li>
+                    <li>
+                        <a href="https://pangos.dk/kategori/skoenhed" class="smegam" data-id="362"><font
+                                style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">Beauty</font></font></a>
+                    </li>
+                    <!--<li><a href="#"><img src="https://pangos.dk/assets/v2/images/baby.png" /> Børn</a></li>
+<li><a href="#"><img src="https://pangos.dk/assets/v2/images/woman.png" /> Kvinder</a></li>
+<li><a href="#"><img src="https://pangos.dk/assets/v2/images/man.png" /> Mænd</a></li>
+<li><a href="#"><img src="https://pangos.dk/assets/v2/images/outlet.png" /> Outlet</a></li>-->
+                </ul>
+            </div>
+            <div class="col-md-5 col-7">
+
+                <div class="mobile-buttons d-block d-sm-none">
+                    <div class="buttons ">
+                        <a href="https://pangos.dk/user/profile">
+                            <div class="account"><i class="fal fa-user" aria-hidden="true"></i></div>
+                        </a>
+
+                        <a href="https://pangos.dk/kurv">
+                            <div class="cart"><i class="fal fa-shopping-bag" aria-hidden="true"></i></div>
+                        </a>
+                        <a href="#" class="open-sidemenu">
+                            <div class="account"><i class="fal fa-bars" aria-hidden="true"></i></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="float-right-search search-web ">
+                    <div class="searchbox">
+                        <i class="fal fa-search" aria-hidden="true"></i>
+                        <form action="https://pangos.dk/search" method="GET">
+                            <input type="text" name="term" value="" class="search-field"
+                                   placeholder="What are you looking for?">
+                        </form>
+                    </div>
+
+                    <div class="buttons ">
+                        <a href="https://pangos.dk/user/profile">
+                            <div class="account"><i class="fal fa-user" aria-hidden="true"></i></div>
+                        </a>
+
+                        <a href="https://pangos.dk/kurv">
+                            <div class="cart"><i class="fal fa-shopping-bag" aria-hidden="true"></i></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 search-mobile">
+                <div class="float-right-search ">
+                    <div class="searchbox">
+                        <i class="fal fa-search" aria-hidden="true"></i>
+                        <form action="https://pangos.dk/search" method="GET">
+                            <input type="text" name="term" value="" class="search-field"
+                                   placeholder="Hvad leder du efter?">
+                        </form>
+                    </div>
+
+                    <div class="buttons ">
+                        <a href="https://pangos.dk/user/profile">
+                            <div class="account"><i class="fal fa-user" aria-hidden="true"></i></div>
+                        </a>
+
+                        <a href="https://pangos.dk/kurv">
+                            <div class="cart"><i class="fal fa-shopping-bag" aria-hidden="true"></i></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="side-menu d-sm-none">
+
+    <div class="menu">
+        <ul class="navbar-nav mobile-nav mr-auto">
+            <li class="nav-item active">
+
+                <a class="opensub" data-id="28" href="https://pangos.dk/kategori/babyer-og-boern">
+                    Babyer og Børn </a>
+            </li>
+            <li class="nav-item active">
+
+                <a class="opensub" data-id="733" href="https://pangos.dk/kategori/bolighave">
+                    Bolig &amp; have </a>
+            </li>
+            <li class="nav-item active">
+
+                <a class="opensub" data-id="458" href="https://pangos.dk/kategori/kaeledyr">
+                    Kæledyr </a>
+            </li>
+            <li class="nav-item active">
+
+                <a class="opensub" data-id="362" href="https://pangos.dk/kategori/skoenhed">
+                    Skønhed </a>
+            </li>
+        </ul>
+
+        <div class="cat-m-sub cat-m-sub-28" style="display: none">
+            <a href="#">
+                <div class="goback-menu">Gå tilbage</div>
+            </a>
+            <div class="row">
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/amning" style="color: #2e2e2e">Amning</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/boerns-bordservice" style="color: #2e2e2e">Børns
+                            bordservice</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/badetid" style="color: #2e2e2e">Badetid</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/sengetid" style="color: #2e2e2e">Sengetid</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/afslapning-og-sjov" style="color: #2e2e2e">Afslapning og
+                            sjov</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/hjemsikkerhed" style="color: #2e2e2e">Hjemsikkerhed</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/rejser-og-ture" style="color: #2e2e2e">Rejser og ture</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/paraplyer-hatte-til-boern" style="color: #2e2e2e">Paraplyer
+                            &amp; Hatte til børn</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/indretning" style="color: #2e2e2e">Indretning</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/toej-og-sko-til-boern" style="color: #2e2e2e">Tøj og sko til
+                            børn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cat-m-sub cat-m-sub-733" style="display: none">
+            <a href="#">
+                <div class="goback-menu">Gå tilbage</div>
+            </a>
+            <div class="row">
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/bagningdesserter"
+                           style="color: #2e2e2e">Bagning/Desserter</a>
+                    </div>
+                    <ul class="s">
+                        <li>
+                            <a href="https://pangos.dk/kategori/dekorasjon-tilbehoer-og-formning"
+                               style="color: #2e2e2e">Dekorasjon, tilbehør og formning</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/fontaener-og-fondue" style="color: #2e2e2e">Fontæner og
+                                fondue</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/floedeis-og-yoghurtmaskiner" style="color: #2e2e2e">Flødeis
+                                og yoghurtmaskiner</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/pandekager-og-vaffeljern" style="color: #2e2e2e">Pandekager
+                                og vaffeljern</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/gourmet-koekken" style="color: #2e2e2e">Gourmet Køkken</a>
+                    </div>
+                    <ul class="s">
+                        <li>
+                            <a href="https://pangos.dk/kategori/smaa-elektriske-apparater" style="color: #2e2e2e">Små
+                                Elektriske Apparater</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/koekkenudstyr" style="color: #2e2e2e">Køkkenudstyr</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/koekkentilbehoer-koekkenredskaber"
+                               style="color: #2e2e2e">Køkkentilbehør Køkkenredskaber</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/bagningdesserter" style="color: #2e2e2e">Bagning/Desserter</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/gourmet" style="color: #2e2e2e">Gourmet</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/vin-reoler-og-tilbehoer" style="color: #2e2e2e">Vin
+                                reoler og tilbehør</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/sprit-og-tilbehoer" style="color: #2e2e2e">Sprit Og
+                                Tilbehør</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/vinhylder" style="color: #2e2e2e">Vinhylder</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/speciel-samlinger" style="color: #2e2e2e">Speciel
+                                Samlinger</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/koekkenredskaber"
+                               style="color: #2e2e2e">Køkkenredskaber</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/have-og-terrasse" style="color: #2e2e2e">Have og
+                            Terrasse</a>
+                    </div>
+                    <ul class="s">
+                        <li>
+                            <a href="https://pangos.dk/kategori/grill" style="color: #2e2e2e">Grill</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/dekoration-belysning-og-moebler" style="color: #2e2e2e">Dekoration,
+                                belysning og møbler</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/insektrepellere"
+                               style="color: #2e2e2e">Insektrepellere</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/vandslanger-og-sprinklere" style="color: #2e2e2e">Vandslanger
+                                og sprinklere</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/belysning-og-undendoersindretning"
+                               style="color: #2e2e2e">Belysning og undendørsindretning</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/havearbejde" style="color: #2e2e2e">Havearbejde</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/hjem-have" style="color: #2e2e2e">Hjem Have</a>
+                    </div>
+                    <ul class="s">
+                        <li>
+                            <a href="https://pangos.dk/kategori/indretning-og-belysning" style="color: #2e2e2e">Indretning
+                                og Belysning</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/badevaerelse" style="color: #2e2e2e">Badeværelse</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/have-og-terrasse" style="color: #2e2e2e">Have og
+                                Terrasse</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/kaeledyr" style="color: #2e2e2e">Kæledyr</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/opvarmning-og-klimaanlaeg" style="color: #2e2e2e">Opvarmning
+                                og Klimaanlæg</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/rengoering-stoevsugning-og-strygning"
+                               style="color: #2e2e2e">Rengøring, Støvsugning og Strygning</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/vaertoej-og-tilbehoer" style="color: #2e2e2e">vaertøj og
+                                tilbehør</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/hjemsikkerhed" style="color: #2e2e2e">Hjemsikkerhed</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/tekstiler-til-hjemmet" style="color: #2e2e2e">Tekstiler
+                                til hjemmet</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/moebler" style="color: #2e2e2e">Møbler</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/smaaopbevaring" style="color: #2e2e2e">Småopbevaring</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/eksklusiv-samlinger" style="color: #2e2e2e">Eksklusiv
+                                Samlinger</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/afslapning" style="color: #2e2e2e">Afslapning</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/indretning-og-belysning" style="color: #2e2e2e">Indretning
+                            og Belysning</a>
+                    </div>
+                    <ul class="s">
+                        <li>
+                            <a href="https://pangos.dk/kategori/billeder-og-plakater" style="color: #2e2e2e">Billeder og
+                                plakater</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/fotorammer-og-billedeholdere" style="color: #2e2e2e">Fotorammer
+                                og billedeholdere</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/vaeg-og-bordure" style="color: #2e2e2e">Væg og
+                                bordure</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/lightere-askebaegre-og-cigaretetuier"
+                               style="color: #2e2e2e">Lightere, askebægre og cigaretetuier</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/andre-indretningsartikler" style="color: #2e2e2e">Andre
+                                indretningsartikler</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/solenergi-belysning" style="color: #2e2e2e">Solenergi
+                                belysning</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/led-belysning" style="color: #2e2e2e">Led-belysning</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/stereoanlaeg" style="color: #2e2e2e">Stereoanlæg</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/spareboesser" style="color: #2e2e2e">Sparebøsser</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/spejle" style="color: #2e2e2e">Spejle</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/bordpynt-og-vaser" style="color: #2e2e2e">Bordpynt og
+                                vaser</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/stearinlys-og-lysestager" style="color: #2e2e2e">Stearinlys
+                                og lysestager</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/paraplystativer-og-magasinholdere"
+                               style="color: #2e2e2e">Paraplystativer og magasinholdere</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/smykkeskrin-og-keramiske-krukker"
+                               style="color: #2e2e2e">Smykkeskrin og keramiske krukker</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/lamper" style="color: #2e2e2e">Lamper</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/grammofoner" style="color: #2e2e2e">Grammofoner</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/doerstoppere" style="color: #2e2e2e">Dørstoppere</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/paerer" style="color: #2e2e2e">Pærer</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/juledekorationer" style="color: #2e2e2e">Juledekorationer</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/rengoering-stoevsugning-og-strygning"
+                           style="color: #2e2e2e">Rengøring, Støvsugning og Strygning</a>
+                    </div>
+                    <ul class="s">
+                        <li>
+                            <a href="https://pangos.dk/kategori/damprengoering" style="color: #2e2e2e">Damprengøring</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/mopper-og-koste" style="color: #2e2e2e">Mopper og
+                                koste</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/stoevsugere-og-rengoeringrobotter"
+                               style="color: #2e2e2e">Støvsugere og rengøringrobotter</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/toerretumblere-strygejern-og-toerrestativer"
+                               style="color: #2e2e2e">Tørretumblere, strygejern og tørrestativer</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/symaskiner" style="color: #2e2e2e">Symaskiner</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/andre-rengoeringsmidler" style="color: #2e2e2e">Andre
+                                rengøringsmidler</a>
+                        </li>
+                        <li>
+                            <a href="https://pangos.dk/kategori/luftrensere" style="color: #2e2e2e">Luftrensere</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="cat-m-sub cat-m-sub-458" style="display: none">
+            <a href="#">
+                <div class="goback-menu">Gå tilbage</div>
+            </a>
+            <div class="row">
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/sundhed-og-hygiejne" style="color: #2e2e2e">Sundhed og
+                            hygiejne</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/rejser-og-gaature" style="color: #2e2e2e">Rejser og
+                            gåture</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/boernesenge-og-madrasser" style="color: #2e2e2e">Hundesenge
+                            og madrasser</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/drikke-og-fodring" style="color: #2e2e2e">Drikke og
+                            fodring</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/legetoej" style="color: #2e2e2e">Legetøj</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cat-m-sub cat-m-sub-362" style="display: none">
+            <a href="#">
+                <div class="goback-menu">Gå tilbage</div>
+            </a>
+            <div class="row">
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/afslapning-og-velvaere" style="color: #2e2e2e">Afslapning og
+                            Velvære</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/haarprodukter" style="color: #2e2e2e">Hårprodukter</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/skoenhedsprodukter-og-kropsbehandlinger"
+                           style="color: #2e2e2e">Skønhedsprodukter og Kropsbehandlinger</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/solcreme" style="color: #2e2e2e">Solcreme</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tophead-sub">
+                        <a href="https://pangos.dk/kategori/haarklemmer" style="color: #2e2e2e">hårklemmer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="overlay"></div>
+<div class="mega-menu" style="display: none">
+    <div class="container small-container">
+        <div class="row">
+            <div class="cat-sub cat-sub-28" style="display: block">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/amning" data-id="29" style="color: #2e2e2e">Amning</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/boerns-bordservice" data-id="30" style="color: #2e2e2e">Børns
+                                bordservice</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/badetid" data-id="31" style="color: #2e2e2e">Badetid</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/sengetid" data-id="32"
+                               style="color: #2e2e2e">Sengetid</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/afslapning-og-sjov" data-id="33" style="color: #2e2e2e">Afslapning
+                                og sjov</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/hjemsikkerhed" data-id="34" style="color: #2e2e2e">Hjemsikkerhed</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/rejser-og-ture" data-id="35" style="color: #2e2e2e">Rejser
+                                og ture</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/paraplyer-hatte-til-boern" data-id="36"
+                               style="color: #2e2e2e">Paraplyer &amp; Hatte til børn</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/indretning" data-id="37" style="color: #2e2e2e">Indretning</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/toej-og-sko-til-boern" data-id="38"
+                               style="color: #2e2e2e">Tøj og sko til børn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cat-sub cat-sub-733" style="display: block">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/bagningdesserter" data-id="44" style="color: #2e2e2e">Bagning/Desserter</a>
+                        </div>
+                        <ul class="s">
+                            <li>
+                                <a href="https://pangos.dk/kategori/dekorasjon-tilbehoer-og-formning"
+                                   style="color: #2e2e2e">Dekorasjon, tilbehør og formning</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/fontaener-og-fondue" style="color: #2e2e2e">Fontæner
+                                    og fondue</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/floedeis-og-yoghurtmaskiner" style="color: #2e2e2e">Flødeis
+                                    og yoghurtmaskiner</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/pandekager-og-vaffeljern" style="color: #2e2e2e">Pandekager
+                                    og vaffeljern</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/gourmet-koekken" data-id="334" style="color: #2e2e2e">Gourmet
+                                Køkken</a>
+                        </div>
+                        <ul class="s">
+                            <li>
+                                <a href="https://pangos.dk/kategori/smaa-elektriske-apparater" style="color: #2e2e2e">Små
+                                    Elektriske Apparater</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/koekkenudstyr"
+                                   style="color: #2e2e2e">Køkkenudstyr</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/koekkentilbehoer-koekkenredskaber"
+                                   style="color: #2e2e2e">Køkkentilbehør Køkkenredskaber</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/bagningdesserter" style="color: #2e2e2e">Bagning/Desserter</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/gourmet" style="color: #2e2e2e">Gourmet</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/vin-reoler-og-tilbehoer" style="color: #2e2e2e">Vin
+                                    reoler og tilbehør</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/sprit-og-tilbehoer" style="color: #2e2e2e">Sprit Og
+                                    Tilbehør</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/vinhylder" style="color: #2e2e2e">Vinhylder</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/speciel-samlinger" style="color: #2e2e2e">Speciel
+                                    Samlinger</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/koekkenredskaber" style="color: #2e2e2e">Køkkenredskaber</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/have-og-terrasse" data-id="355" style="color: #2e2e2e">Have
+                                og Terrasse</a>
+                        </div>
+                        <ul class="s">
+                            <li>
+                                <a href="https://pangos.dk/kategori/grill" style="color: #2e2e2e">Grill</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/dekoration-belysning-og-moebler"
+                                   style="color: #2e2e2e">Dekoration, belysning og møbler</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/insektrepellere" style="color: #2e2e2e">Insektrepellere</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/vandslanger-og-sprinklere" style="color: #2e2e2e">Vandslanger
+                                    og sprinklere</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/belysning-og-undendoersindretning"
+                                   style="color: #2e2e2e">Belysning og undendørsindretning</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/havearbejde" style="color: #2e2e2e">Havearbejde</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/hjem-have" data-id="367" style="color: #2e2e2e">Hjem
+                                Have</a>
+                        </div>
+                        <ul class="s">
+                            <li>
+                                <a href="https://pangos.dk/kategori/indretning-og-belysning" style="color: #2e2e2e">Indretning
+                                    og Belysning</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/badevaerelse" style="color: #2e2e2e">Badeværelse</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/have-og-terrasse" style="color: #2e2e2e">Have og
+                                    Terrasse</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/kaeledyr" style="color: #2e2e2e">Kæledyr</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/opvarmning-og-klimaanlaeg" style="color: #2e2e2e">Opvarmning
+                                    og Klimaanlæg</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/rengoering-stoevsugning-og-strygning"
+                                   style="color: #2e2e2e">Rengøring, Støvsugning og Strygning</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/vaertoej-og-tilbehoer" style="color: #2e2e2e">vaertøj
+                                    og tilbehør</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/hjemsikkerhed"
+                                   style="color: #2e2e2e">Hjemsikkerhed</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/tekstiler-til-hjemmet" style="color: #2e2e2e">Tekstiler
+                                    til hjemmet</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/moebler" style="color: #2e2e2e">Møbler</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/smaaopbevaring"
+                                   style="color: #2e2e2e">Småopbevaring</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/eksklusiv-samlinger" style="color: #2e2e2e">Eksklusiv
+                                    Samlinger</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/afslapning" style="color: #2e2e2e">Afslapning</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/indretning-og-belysning" data-id="381"
+                               style="color: #2e2e2e">Indretning og Belysning</a>
+                        </div>
+                        <ul class="s">
+                            <li>
+                                <a href="https://pangos.dk/kategori/billeder-og-plakater" style="color: #2e2e2e">Billeder
+                                    og plakater</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/fotorammer-og-billedeholdere"
+                                   style="color: #2e2e2e">Fotorammer og billedeholdere</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/vaeg-og-bordure" style="color: #2e2e2e">Væg og
+                                    bordure</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/lightere-askebaegre-og-cigaretetuier"
+                                   style="color: #2e2e2e">Lightere, askebægre og cigaretetuier</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/andre-indretningsartikler" style="color: #2e2e2e">Andre
+                                    indretningsartikler</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/solenergi-belysning" style="color: #2e2e2e">Solenergi
+                                    belysning</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/led-belysning"
+                                   style="color: #2e2e2e">Led-belysning</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/stereoanlaeg" style="color: #2e2e2e">Stereoanlæg</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/spareboesser" style="color: #2e2e2e">Sparebøsser</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/spejle" style="color: #2e2e2e">Spejle</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/bordpynt-og-vaser" style="color: #2e2e2e">Bordpynt
+                                    og vaser</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/stearinlys-og-lysestager" style="color: #2e2e2e">Stearinlys
+                                    og lysestager</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/paraplystativer-og-magasinholdere"
+                                   style="color: #2e2e2e">Paraplystativer og magasinholdere</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/smykkeskrin-og-keramiske-krukker"
+                                   style="color: #2e2e2e">Smykkeskrin og keramiske krukker</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/lamper" style="color: #2e2e2e">Lamper</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/grammofoner" style="color: #2e2e2e">Grammofoner</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/doerstoppere" style="color: #2e2e2e">Dørstoppere</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/paerer" style="color: #2e2e2e">Pærer</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/juledekorationer" style="color: #2e2e2e">Juledekorationer</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/rengoering-stoevsugning-og-strygning" data-id="593"
+                               style="color: #2e2e2e">Rengøring, Støvsugning og Strygning</a>
+                        </div>
+                        <ul class="s">
+                            <li>
+                                <a href="https://pangos.dk/kategori/damprengoering"
+                                   style="color: #2e2e2e">Damprengøring</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/mopper-og-koste" style="color: #2e2e2e">Mopper og
+                                    koste</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/stoevsugere-og-rengoeringrobotter"
+                                   style="color: #2e2e2e">Støvsugere og rengøringrobotter</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/toerretumblere-strygejern-og-toerrestativer"
+                                   style="color: #2e2e2e">Tørretumblere, strygejern og tørrestativer</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/symaskiner" style="color: #2e2e2e">Symaskiner</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/andre-rengoeringsmidler" style="color: #2e2e2e">Andre
+                                    rengøringsmidler</a>
+                            </li>
+                            <li>
+                                <a href="https://pangos.dk/kategori/luftrensere" style="color: #2e2e2e">Luftrensere</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="cat-sub cat-sub-458" style="display: block">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/sundhed-og-hygiejne" data-id="459"
+                               style="color: #2e2e2e">Sundhed og hygiejne</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/rejser-og-gaature" data-id="460" style="color: #2e2e2e">Rejser
+                                og gåture</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/boernesenge-og-madrasser" data-id="461"
+                               style="color: #2e2e2e">Hundesenge og madrasser</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/drikke-og-fodring" data-id="462" style="color: #2e2e2e">Drikke
+                                og fodring</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/legetoej" data-id="463"
+                               style="color: #2e2e2e">Legetøj</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cat-sub cat-sub-362" style="display: block">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/afslapning-og-velvaere" data-id="363"
+                               style="color: #2e2e2e">Afslapning og Velvære</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/haarprodukter" data-id="364" style="color: #2e2e2e">Hårprodukter</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/skoenhedsprodukter-og-kropsbehandlinger" data-id="365"
+                               style="color: #2e2e2e">Skønhedsprodukter og Kropsbehandlinger</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/solcreme" data-id="366"
+                               style="color: #2e2e2e">Solcreme</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="tophead">
+                            <a href="https://pangos.dk/kategori/haarklemmer" data-id="734" style="color: #2e2e2e">hårklemmer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--second bar -->
+
+{% comment %} <div class="alert alert-info" role="alert">
+    <strong> Grab a gift for your Gemstone loving friends and family.</strong> Place your engraved order for delivery in
+    time to make your occassion special!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+</div> {% endcomment %}
+
+{% block body %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% block content %}{% endblock %}
+                {% block payment-gateway %}
+                {% endblock payment-gateway %}
+
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+<!--footer-->
+
+{% comment %} <div class="container">
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+        </ul>
+        <p class="text-center text-muted">TraditionalJewellery© 2022 Company, Inc</p>
+    </footer>
+</div> {% endcomment %}
+
+<section class="review-section">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <h1 class="review-h1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Over
+                    5000 customers can't be wrong</font></font></h1>
+            </div>
+
+            <div class="col-md-3">
+                <div class="review-box">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="headline"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sophie
+                        Hulgaard</font></font></div>
+                    <div class="text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">I
+                        have only good things to say about Pangos! </font><font style="vertical-align: inherit;">They
+                        have really fast delivery and extremely good customer service. </font><font
+                            style="vertical-align: inherit;">When my package arrived I discovered that I had ordered a
+                        different model than the one I wanted.
+                    </font></font><br><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Really
+                        quickly it was really on its way to me, without extra costs for shipping or anything, that's
+                        good service!</font></font></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="review-box">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="headline"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rasmus
+                        Larsen</font></font></div>
+                    <div class="text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">When
+                        summer began to approach, I was both looking for new things for the garden and the barbecue,
+                        via. </font><font style="vertical-align: inherit;">Google I found Pangos. </font><font
+                            style="vertical-align: inherit;">Since then I have placed 5 orders.
+                    </font></font><br><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">All
+                        of them have arrived quickly and at these very good prices! </font></font><br><font
+                            style="vertical-align: inherit;"><font style="vertical-align: inherit;">I will be a member
+                        at pangos for a long time!</font></font></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="review-box">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="headline"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Simone
+                        Svendsen</font></font></div>
+                    <div class="text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">I
+                        was finally looking for some things for my sweet dog Sofus and came across this site which has
+                        just about everything you need! </font><font style="vertical-align: inherit;">So it was a no
+                        brainer to join, especially since I could try the first 7 days for free and just unsubscribe if
+                        it wasn't me. </font><font style="vertical-align: inherit;">Pangos is what we have been missing,
+                        a membership, all products for cheap money.</font></font></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="review-box">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="headline">Caroline Juul</div>
+                    <div class="text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">I
+                        ordered 4 different hair clips for a fraction of what others charge for them.
+                    </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The
+                        package was delivered the next day, I had tracking all the way so I could follow the process,
+                        everything just worked.
+                    </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">On
+                        top of that, customer service was really helpful in getting one of them exchanged for another
+                        model, can really recommend Pangos!</font></font></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="front">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="contact-box">
+                    <div class="img"><img src="https://pangos.dk/assets/v2/images/phone.png"></div>
+                    <div class="text">
+                        <div class="headleft">+45 7136 4002</div>
+                        <div class="sub">
+                            Mandag: 10:00 - 14:00<br>
+                            Tirsdag: 10:00 - 14:00<br>
+                            Onsdag: 10:00 - 14:00<br>
+                            Torsdag: 10:00 - 14:00<br>
+                            Fredag: 10:00 - 14:00<br>
+                            Lørdag: Lukket<br>
+                            Søndag: Lukket
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="contact-box" style="margin-bottom: 0px;">
+                    <div class="img"><img src="https://pangos.dk/assets/v2/images/mail.png"></div>
+                    <div class="text">
+                        <div class="headleft">hej@pangos.dk</div>
+                        <div class="sub">besvares indenfor 24 timer i hverdagene</div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+            <div class="col-md-2 noicon">
+                <div class="head">Information</div>
+                <ul>
+                    <li><a href="https://pangos.dk/pages/subscription_conditions">Abonnementsbetingelser</a></li>
+                    <li><a href="https://pangos.dk/user/payments">Dit abonnement</a></li>
+                    <li><a href="https://pangos.dk/pages/terms">Handelsbetingelser</a></li>
+                    <li><a href="https://pangos.dk/pages/kundeservice">Kundeservice</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 noicon">
+                <div class="head">Om Pangos</div>
+
+                <p>
+                    Pangos.dk er en fordelsklub med flere tusinde produkter til vores medlemmer!<br>Medlemskab koster <b
+                        style="font-weight: bold">139 dk/md</b>. Du kan prøve det det af i 7 dage og nemt afmelde hvis
+                    det ikke er dig, ingen binding! </p>
+
+                <img src="https://pangos.dk/assets/v2/images/cards-small.png">
+                <br>
+                <img src="https://pangos.dk/assets/v2/images/daologo.png"
+                     style="margin-top: 20px; max-width: 120px; margin-right: 15px">
+
+            </div>
+            <!--
+            <div class="col-md-2 noicon">
+               <div class="head">Sociale medier</div>
+               <ul>
+                   <li></li>
+               </ul>
+            </div>-->
+        </div>
+    </div>
+</footer>
+</div>
+
+
+{% load static %}
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS  -->
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/87fb94f535.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/all.min.js' %}"></script>
+<script src="{% static 'js/myscript.js' %}"></script>
+
+{% block js %}
+
+
+    <script>
+        console.log('working');
+
+        if (localStorage.getItem('bag') == null) {
+            var bag = {};
+        } else {
+            bag = JSON.parse(localStorage.getItem('bag'));
+            document.getElementById('bag').innerHTML = Object.values(bag).reduce((previous, current) => previous + current)
+        }
+
+        $('.bag').click(function () {
+            console.log('clicked');
+            var idstr = this.id.toString();
+            console.log(idstr);
+            if (bag[idstr] != undefined) {
+                bag[idstr] = bag[idstr] + 1;
+            } else {
+                bag[idstr] = 1;
+            }
+            console.log(bag);
+            localStorage.setItem('bag', JSON.stringify(bag));
+            document.getElementById('bag').innerHTML = Object.values(bag).reduce((previous, current) => previous + current)
+        });
+        $('#popcart').popover();
+        document.getElementById("popcart").setAttribute('data-content', '<h5>Shopping bag</h5>');
+    </script>
+
+{% endblock %}
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS  -->
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/all.min.js' %}"></script>
+<script src="{% static 'js/myscript.js' %}"></script>
+
+</body>
+
+</html>

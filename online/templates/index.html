@@ -1,0 +1,315 @@
+{% extends 'basic.html' %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css/" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title> Traditional Jewellery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+</head>
+<!--Nav bar-->
+{% load static %}
+
+<body>
+{% block body %}
+
+    <!-- Carousel part-1 -->
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+    </div>
+    <section class="front-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <h1><b>Tilmeld dig Pangos</b> i dag og spar op til 75%.</h1>
+                    <p>Pangos.dk er en fordelsklub med flere tusinde produkter til vores medlemmer!<br>Medlemskab koster
+                        <b style="font-weight: bold">139 dk/md</b>. Du kan prøve det det af i 7 dage og nemt afmelde
+                        hvis det ikke er dig, ingen binding!</p>
+                    <a href="#">Læs mere om fordelene</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-md-6 offset-1 frontgroup-box">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carousel part-2 -->
+
+    <section class="products-list">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12"><h2>Se et udvalg af vores <span>produkter</span></h2></div>
+                {% for r in ring %}
+                <div class="col-md-3 col-6">
+                    <a href="{% url 'product-detail' r.id %}">
+                        <div class="product">
+                            <center><img
+                                    src="{{ r.product_image.url }}"
+                                    style="max-width: 90%;"></center>
+                            <div class="pname">
+                                {{ r.title }}
+                            </div>
+
+                            <div class="skiller"></div>
+
+                            <div class="normalprice">
+                                <div class="left">Normalpris:DKK {{ r.discount_price }}</div>
+                                <div class="right">-50%</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="memberprice">
+                                <div class="left">Medlemspris <i class="fal fa-question-circle" data-toggle="tooltip"
+                                                                 data-placement="top" data-html="true" title=""
+                                                                 aria-hidden="true"
+                                                                 data-original-title="Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis"></i><span
+                                        class="sr-only">Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis</span>
+                                </div>
+                                <div class="right">{{ r.selling_price }} kr</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            {% for b in bracelet %}
+                <div class="col-md-3 col-6">
+                    <a href="{% url 'product-detail' b.id %}">
+                        <div class="product">
+                            <center><img
+                                    src="{{ b.product_image.url }}"
+                                    style="max-width: 90%;"></center>
+                            <div class="pname">
+                                {{ b.title }}
+                            </div>
+
+                            <div class="skiller"></div>
+
+                            <div class="normalprice">
+                                <div class="left">Normalpris:DKK {{ b.discount_price }}</div>
+                                <div class="right">-50%</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="memberprice">
+                                <div class="left">Medlemspris <i class="fal fa-question-circle" data-toggle="tooltip"
+                                                                 data-placement="top" data-html="true" title=""
+                                                                 aria-hidden="true"
+                                                                 data-original-title="Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis"></i><span
+                                        class="sr-only">Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis</span>
+                                </div>
+                                <div class="right">{{ b.selling_price }} kr</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+{#    <!-- 1st Product Slider -->#}
+{#    <div class="m-3">#}
+{#        <h2>Jewelery Ring</h2>#}
+{#        <!-- Slider 1 -->#}
+{#        <div class="owl-carousel" id="slider1">#}
+{#            {% for r in ring %}#}
+{#                {% comment %} <a href="{% url 'product-detail' r.id %}" class="btn">#}
+{#                    <div class="item"><img src="{{ r.product_image.url }}" alt="" height="200px"><span#}
+{#                            class="fw-bold">{{ r.title }}</span><br><span#}
+{#                            class="fs-5">£. {{ r.discount_price }}</span></div>#}
+{#                    <button type="button" class="btn btn-primary">#}
+{#                        Add To Bag#}
+{#                    </button>#}
+{#                    <button type="button" class="btn btn-primary">#}
+{#                        Quick View#}
+{#                    </button>#}
+{##}
+{#                </a> {% endcomment %}#}
+{#                <div class="card-group">#}
+{#                    <div class="card">#}
+{#                        <img src="{{ r.product_image.url }}" class="card-img-top" alt="...">#}
+{#                        <div class="card-body">#}
+{#                            <h5 class="card-title">{{ r.title }}</h5>#}
+{#                            <p class="card-text">£. {{ r.discount_price }}</p>#}
+{#                            <button type="button" class="btn btn-primary">#}
+{#                                Add To Bag#}
+{#                            </button>#}
+{#                            <button type="button" class="btn btn-primary">#}
+{#                                Quick View#}
+{#                            </button>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    </div>#}
+{#    <!-- End 1st Product Slider -->#}
+{#    <!-- 2nd Product Slider -->#}
+{#    <div class="mx-3">#}
+{#        <h2>Jewelery Bracelet</h2>#}
+{#        <!-- Slider 2 -->#}
+{#        <div class="owl-carousel" id="slider2">#}
+{#            {% for b in bracelet %}#}
+{#                <a href="{% url 'product-detail' b.id %}" class="btn">#}
+{#                    <div class="item"><img src="{{ b.product_image.url }}" alt="" height="200px"><span#}
+{#                            class="fw-bold">{{ b.title }}</span><br><span class="fs-5">£. {{ b.discount_price }} </span>#}
+{#                    </div>#}
+{#                    <button type="button" class="btn btn-primary">#}
+{#                        Add To Bag#}
+{#                    </button>#}
+{#                    <button type="button" class="btn btn-primary">#}
+{#                        Quick View#}
+{#                    </button>#}
+{#                </a>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    </div>#}
+{#    <!-- End 2nd Product Slider -->#}
+{##}
+{#    <!-- 3rd Product Slider -->#}
+{#    <div class="mx-3">#}
+{#        <h2>Jewelery Necklace</h2>#}
+{#        <!-- Slider 3 -->#}
+{#        <div class="owl-carousel" id="slider3">#}
+{#            {% for n in necklace %}#}
+{#                <a href="{% url 'product-detail' n.id %}" class="btn">#}
+{#                    <div class="item"><img src="{{ n.product_image.url }}" alt="" height="200px"><span#}
+{#                            class="fw-bold">{{ n.title }}</span><br><span class="fs-5">£. {{ n.discount_price }} </span>#}
+{#                    </div>#}
+{#                    <button type="button" class="btn btn-primary">#}
+{#                        Add To Bag#}
+{#                    </button>#}
+{#                    <button type="button" class="btn btn-primary">#}
+{#                        Quick View#}
+{#                    </button>#}
+{#                </a>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    </div>#}
+    <!-- End 3rd Product Slider -->
+{% endblock %}
+
+
+<!-- js part-3-->
+
+{% block js %}
+    <script>
+
+        // Taking the items from localstorage
+        if (localStorage.getItem('bag') == null) {
+            var bag = {};
+        } else {
+            bag = JSON.parse(localStorage.getItem('bag'));
+            document.getElementById('bag').innerHTML = Object.values(bag).reduce((previous, current) => previous + current)
+            updateBag(bag);
+        }
+
+        //if anyone clicked on add bag it will increment
+        $('.bag').click(function () {
+            var idstr = this.id.toString();
+            if (bag[idstr] != undefined) {
+                bag[idstr] = bag[idstr] + 1;
+            } else {
+                bag[idstr] = 1;
+            }
+            updateBag(bag);
+
+        });
+
+        //update function
+
+        function updateBag(bag) {
+            for (var prod in bag) {
+                document.getElementById('div' + prod).innerHTML = "<button id='minus" + prod + "' class='btn btn-primary minus'>-</button><span id='val" + prod + "' class='cartno'>" + bag[prod] +
+                    "</span><button id='plus" + prod + "' class='btn btn-primary plus'>+</button>"
+
+            }
+            localStorage.setItem('bag', JSON.stringify(bag));
+            document.getElementById('bag').innerHTML = Object.values(bag).reduce((previous, current) => previous + current)
+        }
+
+        //if plus or minus
+        $('.divpr').on("click", "button.minus", function () {
+            a = this.id.slice(7,);
+            console.log(a);
+            bag['pr' + a] = bag['pr' + a] - 1;
+            bag['pr' + a] = Math.max(0, bag['pr' + a]);
+            document.getElementById('valpr' + a).innerHTML = bag['pr' + a];
+            updateBag(bag);
+        });
+
+        $('.divpr').on("click", "button.plus", function () {
+            a = this.id.slice(6,);
+            console.log(a);
+            bag['pr' + a] = bag['pr' + a] + 1;
+            document.getElementById('valpr' + a).innerHTML = bag['pr' + a];
+            updateBag(bag);
+        })
+
+    </script>
+
+{% endblock %}
+
+<!-- Optional JavaScript; choose one of the two! -->
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS  -->
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</div>
+</body>
+
+</html>

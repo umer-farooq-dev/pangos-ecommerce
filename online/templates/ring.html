@@ -1,0 +1,42 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}Category{% endblock title %}
+{% block body %}
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="list-group">
+                    <a href="{% url 'ring' %}" class="list-group-item list-group-item-action" aria-current="true">All
+                        Rings</a>
+                    <a href="{% url 'ringdata' 'Gold' %}" class="list-group-item list-group-item-action"
+                       aria-current="true">Gold</a>
+                    <a href="{% url 'ringdata' 'Silver' %}" class="list-group-item list-group-item-action"
+                       aria-current="true">Silver</a>
+                    <a href="{% url 'ringdata' 'Dia' %}" class="list-group-item list-group-item-action"
+                       aria-current="true">Dia</a>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    {% for product in ring %}
+                        <div class="col-sm-4 text-center mb-4">
+                            <a href="{% url 'product-detail' product.id %}" class="btn">
+                                <div class="item">
+                                    <img
+                                            src="{{ product.product_image.url }}" alt="" srcset=""
+                                            class="img-fluid img-thumbnail shadow-sm" height="150" width="150">
+                                    <div class="fw-bold">{{ product.title }}</div>
+                                    <div class="fw-bold">£{{ product.discount_price }}
+                                        <small class="fw-light text-decoration-line-through">{{ product.selling_price }}</small>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

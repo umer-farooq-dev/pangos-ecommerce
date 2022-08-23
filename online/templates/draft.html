@@ -1,0 +1,144 @@
+{% for item in items %}
+<div class="album py-5 bg-light">
+  <div class="container">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src='/media/{{item.image}}' width="50" height="250" class="card-img-top" alt="..">
+          <div class="card-body">
+            <h5 class="card-title">{{item.Item_name}}</h5>
+            <p class="" card-text>{{item.desc}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="#" class="btn btn-primary">Add To Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src='/media/{{item.image}}' width="50" height="250" class="card-img-top" alt="..">
+          <div class="card-body">
+            <h5 class="card-title">{{item.Item_name}}</h5>
+            <p class="" card-text>{{item.desc}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="#" class="btn btn-primary">Add To Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src='/media/{{item.image}}' width="50" height="250" class="card-img-top" alt="..">
+
+          <div class="card-body">
+            <h5 class="card-title">{{item.Item_name}}</h5>
+            <p class="" card-text>{{item.desc}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="#" class="btn btn-primary">Add To Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src='/media/{{item.image}}' width="50" height="250" class="card-img-top" alt="..">
+
+          <div class="card-body">
+            <h5 class="card-title">{{item.Item_name}}</h5>
+            <p class="" card-text>{{item.desc}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="#" class="btn btn-primary">Add To Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src='/media/{{item.image}}' width="50" height="250" class="card-img-top" alt="..">
+
+          <div class="card-body">
+            <h5 class="card-title">{{item.Item_name}}</h5>
+            <p class="" card-text>{{item.desc}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="#" class="btn btn-primary">Add To Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src='/media/{{item.image}}' width="50" height="250" class="card-img-top" alt="..">
+
+          <div class="card-body">
+            <h5 class="card-title">{{item.Item_name}}</h5>
+            <p class="" card-text>{{item.desc}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="#" class="btn btn-primary">Add To Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src='/media/{{item.image}}' width="50" height="250" class="card-img-top" alt="..">
+
+          <div class="card-body">
+            <h5 class="card-title">{{item.Item_name}}</h5>
+            <p class="" card-text>{{item.desc}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="#" class="btn btn-primary">Add To Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src='/media/{{item.image}}' width="50" height="250" class="card-img-top" alt="..">
+
+          <div class="card-body">
+            <h5 class="card-title">{{item.Item_name}}</h5>
+            <p class="" card-text>{{item.desc}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="#" class="btn btn-primary">Add To Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src='/media/{{item.image}}' width="50" height="250" class="card-img-top" alt="..">
+
+          <div class="card-body">
+            <h5 class="card-title">{{item.Item_name}}</h5>
+            <p class="" card-text>{{item.desc}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="#" class="btn btn-primary">Add To Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+{% block js %} 
+<script>
+  console.log('working');
+  if(localStorage.getItem('cart') == null){
+    var cart = {};
+  }
+
+  else
+  {
+    cart = JSON.parse(localStorage.getItem('cart'));
+  }
+
+  $('.cart').click(function(){
+    console.log('clicked');
+  });
+</script>

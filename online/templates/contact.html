@@ -1,0 +1,31 @@
+{% extends 'basic.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Contact Us {% endblock %}
+{% block body %} 
+
+<div class="container">
+    <h2>Contact us</h2>
+    
+    <div class="mb-3">
+        <form action="/online/contact/" method="post">{% csrf_token %}
+        <label for="name" class="form-label" required="true" >Name</label>
+        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Your Name">
+        {{ form|crispy}}
+      <div class="mb-3">
+        <label for="name" class="form-label">E-mail</label>
+        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control" name="email" id="email" placeholder="Enter Your Email">
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Phone No.</label>
+        <input type="tel"  pattern="^(?:0|\+?44)(?:\d\s?){9,10}$" required class="form-control "  name="phone" id="phone" placeholder="Enter Your Phone no UK Format.">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Type your Message</label>
+        <textarea class="form-control"  name="message" id="Message" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+</div>
+
+{% endblock %}
