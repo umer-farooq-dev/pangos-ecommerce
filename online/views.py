@@ -25,6 +25,7 @@ def index(request):
 def about(request):
     return render(request, 'about.html')
 
+
 def send_email(email):
     send_mail(
         'Verify Email',
@@ -38,6 +39,7 @@ def send_email(email):
         # recipient_list=[email],
         # fail_silently=False,
     )
+
 
 @login_required
 def checkout(request):

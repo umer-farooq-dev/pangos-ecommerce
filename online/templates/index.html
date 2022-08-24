@@ -51,6 +51,48 @@
         </div>
     </section>
 
+    <section class="upsell">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-6">
+                    <div class="c b">
+                        <div class="icon">
+                            <i class="fa-solid fa-percent"></i>
+                        </div>
+                        <div class="text">
+                            <div class="head">Spar op til 75%</div>
+                            <div class="sub">På tusindvis af varer</div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-6">
+                    <div class="c b">
+                        <div class="icon">
+                            <i class="fa-solid fa-truck"></i>
+                        </div>
+                        <div class="text">
+                            <div class="head">Dag til dag levering</div>
+                            <div class="sub">Gratis levering</div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-6 hidemobile">
+                    <div class="c">
+                        <div class="icon">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <div class="text">
+                            <div class="head">God kundeservice</div>
+                            <div class="sub">Vi svarer indenfor 24 timer</div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Carousel part-2 -->
 
     <section class="products-list">
@@ -58,165 +100,167 @@
             <div class="row">
                 <div class="col-md-12"><h2>Se et udvalg af vores <span>produkter</span></h2></div>
                 {% for r in ring %}
-                <div class="col-md-3 col-6">
-                    <a href="{% url 'product-detail' r.id %}">
-                        <div class="product">
-                            <center><img
-                                    src="{{ r.product_image.url }}"
-                                    style="max-width: 90%;"></center>
-                            <div class="pname">
-                                {{ r.title }}
-                            </div>
-
-                            <div class="skiller"></div>
-
-                            <div class="normalprice">
-                                <div class="left">Normalpris:DKK {{ r.discount_price }}</div>
-                                <div class="right">-50%</div>
-
-                                <div class="clearfix"></div>
-                            </div>
-
-                            <div class="memberprice">
-                                <div class="left">Medlemspris <i class="fal fa-question-circle" data-toggle="tooltip"
-                                                                 data-placement="top" data-html="true" title=""
-                                                                 aria-hidden="true"
-                                                                 data-original-title="Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis"></i><span
-                                        class="sr-only">Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis</span>
+                    <div class="col-md-3 col-6">
+                        <a href="{% url 'product-detail' r.id %}">
+                            <div class="product">
+                                <center><img
+                                        src="{{ r.product_image.url }}"
+                                        style="max-width: 90%;"></center>
+                                <div class="pname">
+                                    {{ r.title }}
                                 </div>
-                                <div class="right">{{ r.selling_price }} kr</div>
+
+                                <div class="skiller"></div>
+
+                                <div class="normalprice">
+                                    <div class="left">Normalpris:DKK {{ r.discount_price }}</div>
+                                    <div class="right">-50%</div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="memberprice">
+                                    <div class="left">Medlemspris <i class="fal fa-question-circle"
+                                                                     data-toggle="tooltip"
+                                                                     data-placement="top" data-html="true" title=""
+                                                                     aria-hidden="true"
+                                                                     data-original-title="Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis"></i><span
+                                            class="sr-only">Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis</span>
+                                    </div>
+                                    <div class="right">{{ r.selling_price }} kr</div>
+
+                                    <div class="clearfix"></div>
+                                </div>
 
                                 <div class="clearfix"></div>
+
                             </div>
-
-                            <div class="clearfix"></div>
-
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
                 {% endfor %}
-            {% for b in bracelet %}
-                <div class="col-md-3 col-6">
-                    <a href="{% url 'product-detail' b.id %}">
-                        <div class="product">
-                            <center><img
-                                    src="{{ b.product_image.url }}"
-                                    style="max-width: 90%;"></center>
-                            <div class="pname">
-                                {{ b.title }}
-                            </div>
-
-                            <div class="skiller"></div>
-
-                            <div class="normalprice">
-                                <div class="left">Normalpris:DKK {{ b.discount_price }}</div>
-                                <div class="right">-50%</div>
-
-                                <div class="clearfix"></div>
-                            </div>
-
-                            <div class="memberprice">
-                                <div class="left">Medlemspris <i class="fal fa-question-circle" data-toggle="tooltip"
-                                                                 data-placement="top" data-html="true" title=""
-                                                                 aria-hidden="true"
-                                                                 data-original-title="Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis"></i><span
-                                        class="sr-only">Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis</span>
+                {% for b in bracelet %}
+                    <div class="col-md-3 col-6">
+                        <a href="{% url 'product-detail' b.id %}">
+                            <div class="product">
+                                <center><img
+                                        src="{{ b.product_image.url }}"
+                                        style="max-width: 90%;"></center>
+                                <div class="pname">
+                                    {{ b.title }}
                                 </div>
-                                <div class="right">{{ b.selling_price }} kr</div>
+
+                                <div class="skiller"></div>
+
+                                <div class="normalprice">
+                                    <div class="left">Normalpris:DKK {{ b.discount_price }}</div>
+                                    <div class="right">-50%</div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="memberprice">
+                                    <div class="left">Medlemspris <i class="fal fa-question-circle"
+                                                                     data-toggle="tooltip"
+                                                                     data-placement="top" data-html="true" title=""
+                                                                     aria-hidden="true"
+                                                                     data-original-title="Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis"></i><span
+                                            class="sr-only">Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis</span>
+                                    </div>
+                                    <div class="right">{{ b.selling_price }} kr</div>
+
+                                    <div class="clearfix"></div>
+                                </div>
 
                                 <div class="clearfix"></div>
+
                             </div>
-
-                            <div class="clearfix"></div>
-
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
                 {% endfor %}
             </div>
         </div>
     </section>
 
 
-{#    <!-- 1st Product Slider -->#}
-{#    <div class="m-3">#}
-{#        <h2>Jewelery Ring</h2>#}
-{#        <!-- Slider 1 -->#}
-{#        <div class="owl-carousel" id="slider1">#}
-{#            {% for r in ring %}#}
-{#                {% comment %} <a href="{% url 'product-detail' r.id %}" class="btn">#}
-{#                    <div class="item"><img src="{{ r.product_image.url }}" alt="" height="200px"><span#}
-{#                            class="fw-bold">{{ r.title }}</span><br><span#}
-{#                            class="fs-5">£. {{ r.discount_price }}</span></div>#}
-{#                    <button type="button" class="btn btn-primary">#}
-{#                        Add To Bag#}
-{#                    </button>#}
-{#                    <button type="button" class="btn btn-primary">#}
-{#                        Quick View#}
-{#                    </button>#}
-{##}
-{#                </a> {% endcomment %}#}
-{#                <div class="card-group">#}
-{#                    <div class="card">#}
-{#                        <img src="{{ r.product_image.url }}" class="card-img-top" alt="...">#}
-{#                        <div class="card-body">#}
-{#                            <h5 class="card-title">{{ r.title }}</h5>#}
-{#                            <p class="card-text">£. {{ r.discount_price }}</p>#}
-{#                            <button type="button" class="btn btn-primary">#}
-{#                                Add To Bag#}
-{#                            </button>#}
-{#                            <button type="button" class="btn btn-primary">#}
-{#                                Quick View#}
-{#                            </button>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            {% endfor %}#}
-{#        </div>#}
-{#    </div>#}
-{#    <!-- End 1st Product Slider -->#}
-{#    <!-- 2nd Product Slider -->#}
-{#    <div class="mx-3">#}
-{#        <h2>Jewelery Bracelet</h2>#}
-{#        <!-- Slider 2 -->#}
-{#        <div class="owl-carousel" id="slider2">#}
-{#            {% for b in bracelet %}#}
-{#                <a href="{% url 'product-detail' b.id %}" class="btn">#}
-{#                    <div class="item"><img src="{{ b.product_image.url }}" alt="" height="200px"><span#}
-{#                            class="fw-bold">{{ b.title }}</span><br><span class="fs-5">£. {{ b.discount_price }} </span>#}
-{#                    </div>#}
-{#                    <button type="button" class="btn btn-primary">#}
-{#                        Add To Bag#}
-{#                    </button>#}
-{#                    <button type="button" class="btn btn-primary">#}
-{#                        Quick View#}
-{#                    </button>#}
-{#                </a>#}
-{#            {% endfor %}#}
-{#        </div>#}
-{#    </div>#}
-{#    <!-- End 2nd Product Slider -->#}
-{##}
-{#    <!-- 3rd Product Slider -->#}
-{#    <div class="mx-3">#}
-{#        <h2>Jewelery Necklace</h2>#}
-{#        <!-- Slider 3 -->#}
-{#        <div class="owl-carousel" id="slider3">#}
-{#            {% for n in necklace %}#}
-{#                <a href="{% url 'product-detail' n.id %}" class="btn">#}
-{#                    <div class="item"><img src="{{ n.product_image.url }}" alt="" height="200px"><span#}
-{#                            class="fw-bold">{{ n.title }}</span><br><span class="fs-5">£. {{ n.discount_price }} </span>#}
-{#                    </div>#}
-{#                    <button type="button" class="btn btn-primary">#}
-{#                        Add To Bag#}
-{#                    </button>#}
-{#                    <button type="button" class="btn btn-primary">#}
-{#                        Quick View#}
-{#                    </button>#}
-{#                </a>#}
-{#            {% endfor %}#}
-{#        </div>#}
-{#    </div>#}
+    {#    <!-- 1st Product Slider -->#}
+    {#    <div class="m-3">#}
+    {#        <h2>Jewelery Ring</h2>#}
+    {#        <!-- Slider 1 -->#}
+    {#        <div class="owl-carousel" id="slider1">#}
+    {#            {% for r in ring %}#}
+    {#                {% comment %} <a href="{% url 'product-detail' r.id %}" class="btn">#}
+    {#                    <div class="item"><img src="{{ r.product_image.url }}" alt="" height="200px"><span#}
+    {#                            class="fw-bold">{{ r.title }}</span><br><span#}
+    {#                            class="fs-5">£. {{ r.discount_price }}</span></div>#}
+    {#                    <button type="button" class="btn btn-primary">#}
+    {#                        Add To Bag#}
+    {#                    </button>#}
+    {#                    <button type="button" class="btn btn-primary">#}
+    {#                        Quick View#}
+    {#                    </button>#}
+    {##}
+    {#                </a> {% endcomment %}#}
+    {#                <div class="card-group">#}
+    {#                    <div class="card">#}
+    {#                        <img src="{{ r.product_image.url }}" class="card-img-top" alt="...">#}
+    {#                        <div class="card-body">#}
+    {#                            <h5 class="card-title">{{ r.title }}</h5>#}
+    {#                            <p class="card-text">£. {{ r.discount_price }}</p>#}
+    {#                            <button type="button" class="btn btn-primary">#}
+    {#                                Add To Bag#}
+    {#                            </button>#}
+    {#                            <button type="button" class="btn btn-primary">#}
+    {#                                Quick View#}
+    {#                            </button>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            {% endfor %}#}
+    {#        </div>#}
+    {#    </div>#}
+    {#    <!-- End 1st Product Slider -->#}
+    {#    <!-- 2nd Product Slider -->#}
+    {#    <div class="mx-3">#}
+    {#        <h2>Jewelery Bracelet</h2>#}
+    {#        <!-- Slider 2 -->#}
+    {#        <div class="owl-carousel" id="slider2">#}
+    {#            {% for b in bracelet %}#}
+    {#                <a href="{% url 'product-detail' b.id %}" class="btn">#}
+    {#                    <div class="item"><img src="{{ b.product_image.url }}" alt="" height="200px"><span#}
+    {#                            class="fw-bold">{{ b.title }}</span><br><span class="fs-5">£. {{ b.discount_price }} </span>#}
+    {#                    </div>#}
+    {#                    <button type="button" class="btn btn-primary">#}
+    {#                        Add To Bag#}
+    {#                    </button>#}
+    {#                    <button type="button" class="btn btn-primary">#}
+    {#                        Quick View#}
+    {#                    </button>#}
+    {#                </a>#}
+    {#            {% endfor %}#}
+    {#        </div>#}
+    {#    </div>#}
+    {#    <!-- End 2nd Product Slider -->#}
+    {##}
+    {#    <!-- 3rd Product Slider -->#}
+    {#    <div class="mx-3">#}
+    {#        <h2>Jewelery Necklace</h2>#}
+    {#        <!-- Slider 3 -->#}
+    {#        <div class="owl-carousel" id="slider3">#}
+    {#            {% for n in necklace %}#}
+    {#                <a href="{% url 'product-detail' n.id %}" class="btn">#}
+    {#                    <div class="item"><img src="{{ n.product_image.url }}" alt="" height="200px"><span#}
+    {#                            class="fw-bold">{{ n.title }}</span><br><span class="fs-5">£. {{ n.discount_price }} </span>#}
+    {#                    </div>#}
+    {#                    <button type="button" class="btn btn-primary">#}
+    {#                        Add To Bag#}
+    {#                    </button>#}
+    {#                    <button type="button" class="btn btn-primary">#}
+    {#                        Quick View#}
+    {#                    </button>#}
+    {#                </a>#}
+    {#            {% endfor %}#}
+    {#        </div>#}
+    {#    </div>#}
     <!-- End 3rd Product Slider -->
 {% endblock %}
 

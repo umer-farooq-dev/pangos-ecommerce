@@ -11,14 +11,15 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-6jHF7Z3XI3fF4XZixAuSu0gGKrXwoX/w3uFPxC56OtjChio7wtTGJWRW53Nhx6Ev" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    {#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"#}
+    {#          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">#}
+    {#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"#}
+    {#          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">#}
 
 
     <!--Owl Carousel CSS-->
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
     <!--FontAwesome CSS-->
     <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
@@ -27,8 +28,8 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/style2.css' %}">
     <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    {#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"#}
+    {#          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">#}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <title>Traditional Jewellery | {% block title %} {% endblock title %} </title>
@@ -57,10 +58,12 @@
         </div>
     </div>
 </div>
-{% comment %} <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #F9FAFC">
     <div class="container">
         <a class="navbar-brand" href="/online">Traditional Jewellery</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -71,7 +74,7 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="electronicsDropdown" role="button"
+                    <a class="nav-link dropdown-toggle text-black" href="#" id="electronicsDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         Categories
                     </a>
@@ -79,40 +82,51 @@
                         <li><a class="dropdown-item" href="{% url 'ring' %}">Ring</a></li>
                         <li><a class="dropdown-item" href="{% url 'necklace' %}">Necklace</a></li>
                     </ul>
-                <li class="nav-item">
-                    <a class="nav-link" href="/online/about">About Us</a>
-                </li>
+                    {#                    <li class="nav-item">#}
+                    {#                        <a class="nav-link" href="/online/about">About Us</a>#}
+                    {#                    </li>#}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'orders' %}">Tracking System</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-item nav-link" aria-current="page" href="/online/contact">Contact Us</a>
-                </li>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                </form>
+                {#                    <li class="nav-item">#}
+                {#                        <a class="nav-item nav-link" aria-current="page" href="/online/contact">Contact Us</a>#}
+                {#                    </li>#}
 
                 </li>
             </ul>
-            <form class="d-flex">
-                <a class="navbar-brand" href="/admin">Login As Admin</a>
+            {#                <form class="d-flex">#}
+            {#                    <a class="navbar-brand" href="/admin">Login As Admin</a>#}
+            {##}
+            {#                </form>#}
 
-            </form>
             <div>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     {% if request.user.is_authenticated %}
                         <li class="nav-item dropdown mx-2">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button"
+                            <a class="nav-link dropdown-toggle text-black" href="#" id="profileDropdown"
+                               role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ request.user }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                                 <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                                 <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
-                                <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
+                                <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a>
+                                </li>
                                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                             </ul>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="{% url 'showcart' %}" class="nav-link text-white">Bags:<span class="badge bg-danger">{{ totalitem }}</span></a>
+                            <a href="{% url 'showcart' %}" class="nav-link text-black">Cart: <span
+                                    class="badge bg-danger">{{ totalitem }}</span></a>
                         </li>
+                        {#                            <a href="{% url 'showcart' %}">#}
+                        {#                         <div class="cart"><i class="fal fa-shopping-bag" aria-hidden="true"></i></div>#}
+                        {#                        </a>#}
 
 
                     {% else %}
@@ -127,109 +141,109 @@
             </div>
         </div>
     </div>
-</nav> {% endcomment %}
+</nav>
 
-<header>
-    <div class="container">
-        <div class="row">
-
-
-            <div class="col-md-2 col-4">
-                <a href="https://pangos.dk/">
-                    <img src="https://pangos.dk/assets/images/pangos-logo.png">
-                </a>
-            </div>
-
-            <div class="col-md-5 d-none d-sm-block" style="padding-top: 5px">
-                <ul class="menu">
-                    <li>
-                        <a href="https://pangos.dk/kategori/babyer-og-boern" class="smegam" data-id="28"><font
-                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">Babies and
-                            Children</font></font></a>
-                    </li>
-                    <li>
-                        <a href="https://pangos.dk/kategori/bolighave" class="smegam" data-id="733"><font
-                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">Housing &amp;
-                            garden</font></font></a>
-                    </li>
-                    <li>
-                        <a href="https://pangos.dk/kategori/kaeledyr" class="smegam" data-id="458"><font
-                                style="vertical-align: inherit;"><font
-                                style="vertical-align: inherit;">Pet</font></font></a>
-                    </li>
-                    <li>
-                        <a href="https://pangos.dk/kategori/skoenhed" class="smegam" data-id="362"><font
-                                style="vertical-align: inherit;"><font
-                                style="vertical-align: inherit;">Beauty</font></font></a>
-                    </li>
-                    <!--<li><a href="#"><img src="https://pangos.dk/assets/v2/images/baby.png" /> Børn</a></li>
-<li><a href="#"><img src="https://pangos.dk/assets/v2/images/woman.png" /> Kvinder</a></li>
-<li><a href="#"><img src="https://pangos.dk/assets/v2/images/man.png" /> Mænd</a></li>
-<li><a href="#"><img src="https://pangos.dk/assets/v2/images/outlet.png" /> Outlet</a></li>-->
-                </ul>
-            </div>
-            <div class="col-md-5 col-7">
-
-                <div class="mobile-buttons d-block d-sm-none">
-                    <div class="buttons ">
-                        <a href="https://pangos.dk/user/profile">
-                            <div class="account"><i class="fal fa-user" aria-hidden="true"></i></div>
-                        </a>
-
-                        <a href="https://pangos.dk/kurv">
-                            <div class="cart"><i class="fal fa-shopping-bag" aria-hidden="true"></i></div>
-                        </a>
-                        <a href="#" class="open-sidemenu">
-                            <div class="account"><i class="fal fa-bars" aria-hidden="true"></i></div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="float-right-search search-web ">
-                    <div class="searchbox">
-                        <i class="fal fa-search" aria-hidden="true"></i>
-                        <form action="https://pangos.dk/search" method="GET">
-                            <input type="text" name="term" value="" class="search-field"
-                                   placeholder="What are you looking for?">
-                        </form>
-                    </div>
-
-                    <div class="buttons ">
-                        <a href="https://pangos.dk/user/profile">
-                            <div class="account"><i class="fal fa-user" aria-hidden="true"></i></div>
-                        </a>
-
-                        <a href="https://pangos.dk/kurv">
-                            <div class="cart"><i class="fal fa-shopping-bag" aria-hidden="true"></i></div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12 search-mobile">
-                <div class="float-right-search ">
-                    <div class="searchbox">
-                        <i class="fal fa-search" aria-hidden="true"></i>
-                        <form action="https://pangos.dk/search" method="GET">
-                            <input type="text" name="term" value="" class="search-field"
-                                   placeholder="Hvad leder du efter?">
-                        </form>
-                    </div>
-
-                    <div class="buttons ">
-                        <a href="https://pangos.dk/user/profile">
-                            <div class="account"><i class="fal fa-user" aria-hidden="true"></i></div>
-                        </a>
-
-                        <a href="https://pangos.dk/kurv">
-                            <div class="cart"><i class="fal fa-shopping-bag" aria-hidden="true"></i></div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+{#<header>#}
+{#    <div class="container">#}
+{#        <div class="row">#}
+{##}
+{##}
+{#            <div class="col-md-2 col-4">#}
+{#                <a href="https://pangos.dk/">#}
+{#                    <img src="https://pangos.dk/assets/images/pangos-logo.png">#}
+{#                </a>#}
+{#            </div>#}
+{##}
+{#            <div class="col-md-5 d-none d-sm-block" style="padding-top: 5px">#}
+{#                <ul class="menu">#}
+{#                    <li>#}
+{#                        <a href="#" class="smegam" data-id="28"><font#}
+{#                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">Babies and#}
+{#                            Children</font></font></a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="#" class="smegam" data-id="733"><font#}
+{#                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">Housing &amp;#}
+{#                            garden</font></font></a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="https://pangos.dk/kategori/kaeledyr" class="smegam" data-id="458"><font#}
+{#                                style="vertical-align: inherit;"><font#}
+{#                                style="vertical-align: inherit;">Pet</font></font></a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="https://pangos.dk/kategori/skoenhed" class="smegam" data-id="362"><font#}
+{#                                style="vertical-align: inherit;"><font#}
+{#                                style="vertical-align: inherit;">Beauty</font></font></a>#}
+{#                    </li>#}
+{#                    <!--<li><a href="#"><img src="https://pangos.dk/assets/v2/images/baby.png" /> Børn</a></li>#}
+{#<li><a href="#"><img src="https://pangos.dk/assets/v2/images/woman.png" /> Kvinder</a></li>#}
+{#<li><a href="#"><img src="https://pangos.dk/assets/v2/images/man.png" /> Mænd</a></li>#}
+{#<li><a href="#"><img src="https://pangos.dk/assets/v2/images/outlet.png" /> Outlet</a></li>-->#}
+{#                </ul>#}
+{#            </div>#}
+{#            <div class="col-md-5 col-7">#}
+{##}
+{#                <div class="mobile-buttons d-block d-sm-none">#}
+{#                    <div class="buttons ">#}
+{#                        <a href="https://pangos.dk/user/profile">#}
+{#                            <div class="account"><i class="fal fa-user" aria-hidden="true"></i></div>#}
+{#                        </a>#}
+{##}
+{#                        <a href="https://pangos.dk/kurv">#}
+{#                            <div class="cart"><i class="fal fa-shopping-bag" aria-hidden="true"></i></div>#}
+{#                        </a>#}
+{#                        <a href="#" class="open-sidemenu">#}
+{#                            <div class="account"><i class="fal fa-bars" aria-hidden="true"></i></div>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{#                <div class="float-right-search search-web ">#}
+{#                    <div class="searchbox">#}
+{#                        <i class="fal fa-search" aria-hidden="true"></i>#}
+{#                        <form action="https://pangos.dk/search" method="GET">#}
+{#                            <input type="text" name="term" value="" class="search-field"#}
+{#                                   placeholder="What are you looking for?">#}
+{#                        </form>#}
+{#                    </div>#}
+{##}
+{#                    <div class="buttons ">#}
+{#                        <a href="https://pangos.dk/user/profile">#}
+{#                            <div class="account"><i class="fal fa-user" aria-hidden="true"></i></div>#}
+{#                        </a>#}
+{##}
+{#                        <a href="{% url 'showcart' %}">#}
+{#                            <div class="cart"><i class="fal fa-shopping-bag" aria-hidden="true"></i></div>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div class="col-md-12 search-mobile">#}
+{#                <div class="float-right-search ">#}
+{#                    <div class="searchbox">#}
+{#                        <i class="fal fa-search" aria-hidden="true"></i>#}
+{#                        <form action="https://pangos.dk/search" method="GET">#}
+{#                            <input type="text" name="term" value="" class="search-field"#}
+{#                                   placeholder="Hvad leder du efter?">#}
+{#                        </form>#}
+{#                    </div>#}
+{##}
+{#                    <div class="buttons ">#}
+{#                        <a href="#">#}
+{#                            <div class="account"><i class="fal fa-user" aria-hidden="true"></i></div>#}
+{#                        </a>#}
+{##}
+{#                        <a href="#">#}
+{#                            <div class="cart"><i class="fal fa-shopping-bag" aria-hidden="true"></i></div>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</header>#}
 
 <div class="side-menu d-sm-none">
 
@@ -1059,12 +1073,14 @@
 </div>
 <!--second bar -->
 
-{% comment %} <div class="alert alert-info" role="alert">
-    <strong> Grab a gift for your Gemstone loving friends and family.</strong> Place your engraved order for delivery in
-    time to make your occassion special!
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+{% comment %}
+    <div class="alert alert-info" role="alert">
+        <strong> Grab a gift for your Gemstone loving friends and family.</strong> Place your engraved order for
+        delivery in
+        time to make your occassion special!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
-</div> {% endcomment %}
+    </div> {% endcomment %}
 
 {% block body %}
     <main role="main" class="container">
@@ -1088,18 +1104,19 @@
 
 <!--footer-->
 
-{% comment %} <div class="container">
-    <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-        </ul>
-        <p class="text-center text-muted">TraditionalJewellery© 2022 Company, Inc</p>
-    </footer>
-</div> {% endcomment %}
+{% comment %}
+    <div class="container">
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+            </ul>
+            <p class="text-center text-muted">TraditionalJewellery© 2022 Company, Inc</p>
+        </footer>
+    </div> {% endcomment %}
 
 <section class="review-section">
     <div class="container">
@@ -1359,6 +1376,7 @@
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'js/all.min.js' %}"></script>
 <script src="{% static 'js/myscript.js' %}"></script>
+<script src="{% static 'js/site.js' %}"></script>
 
 </body>
 
