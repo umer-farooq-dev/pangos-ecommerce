@@ -1,53 +1,330 @@
 {% extends 'basic.html' %}
 {% block title %} {{ item.Item_name }}- Traditional jewellery{% endblock %}
 {% block body %}
+    {##}
+    {#    <div class="container my-5">#}
+    {#        <div class="row">#}
+    {#            <div class="col-sm-6 text-center align-self-center">#}
+    {#                <img src="{{ product.product_image.url }}" alt="" class="img-fluid img-thumbnail">#}
+    {#            </div>#}
+    {#            <div class="col-sm-5 offset-sm-1">#}
+    {#                <h2>Product Title: {{ product.title }}</h2>#}
+    {#                <hr>#}
+    {#                <p>{{ product.description }}</p> <br>#}
+    {#                <h4>£. {{ product.discount_price }} <small#}
+    {#                        class="fw-light text-decoration-line-through">£. {{ product.selling_price }}</small></h4><br>#}
+    {#                {% if request.user.is_authenticated %}#}
+    {#                    {% if item_already_in_cart %}#}
+    {#                        <a href="{% url 'showcart' %}" class="btn btn-warning shadow px-2 py-2 ms-4">Go To Cart</a>#}
+    {#                    {% else %}#}
+    {##}
+    {#                        <form action="/add-to-cart" class="d-inline">#}
+    {#                            <input type="hidden" name="prod_id" value="{{ product.id }}" id="prod_is">#}
+    {#                            <button type="submit" class="btn btn-primary shadow px-2 py-2"> Add to Bag</button>#}
+    {##}
+    {#                        </form>#}
+    {#                    {% endif %}#}
+    {#                {% endif %}#}
+    {#                {% if not request.user.is_authenticated %}#}
+    {#                    <form action="/add-to-cart" class="d-inline">#}
+    {#                        <input type="hidden" name="prod_id" value="{{ product.id }}" id="prod_is">#}
+    {#                        <button type="submit" class="btn btn-primary shadow px-2 py-2"> Add to Bag</button>#}
+    {##}
+    {#                    </form>#}
+    {#                {% endif %}#}
+    {##}
+    {#                <a href="{% url 'checkout' %}" class="btn btn-danger shadow px-5 py-2 ms-4">Buy Now</a>#}
+    {#                <h5 class="mt-5">Available Offers On Special Occassions...</h5>#}
+    {#                <ul>#}
+    {#                    <h6>The Inspiration</h6>#}
+    {#                    <li>Inspired by the intricate beauty of trees, this collection features designs that are#}
+    {#                        meticulously#}
+    {#                        crafted using 3D printing technology.#}
+    {#                    </li>#}
+    {#                    <li>This design exudes elegance, and showcases the intricacy of curvaceous leaves of the tree.</li>#}
+    {#                    <li>Perfect for a classy and elegant evening, that calls for a fabulous long gown.</li>#}
+    {##}
+    {#                </ul>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
 
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-sm-6 text-center align-self-center">
-                <img src="{{ product.product_image.url }}" alt="" class="img-fluid img-thumbnail">
+    <form action="https://pangos.dk/produkt/skuldertasker-real-madrid-cf-sort-16-x-22-x-6-cm" method="post"
+          accept-charset="utf-8">
+        <section class="product-view">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <h1>{{ product.title }}</h1>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <img src="{{ product.product_image.url }}"
+                                     class="bigImage" style="width: 100%"/>
+                            </div>
+                            <div class="col-md-3 productlist-extra-images">
+                                <img src="{{ product.product_image.url }}"
+                                     class="extraImages"/>
+                                <img src="{{ product.product_image.url }}"
+                                     class="extraImages"/>
+                            </div>
+                        </div>
+
+
+                        <div class="text-info-">
+                            <h1 style="font-size: large">Description</h1>
+                            {{ product.description }}<br>
+{#                            <ul>#}
+{#                                <li>Farve: Sort</li>#}
+{#                                <li>Materiale: Polyester</li>#}
+{#                                <li>Karakteristika: Justerbart tape</li>#}
+{#                                <li>Kapacitet: 6 L</li>#}
+{#                                <li>Lukkemetode: Lynlås</li>#}
+{#                                <li>Rum: 2 håndtag og forlomme med lynlås</li>#}
+{#                                <li>Design: Sportslig</li>#}
+{#                                <li>Ca. mål: 16 x 22 x 6 cm</li>#}
+{#                            </ul>#}
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="buy-box">
+
+                            <div class="inventory-text" style="margin-bottom: 15px">
+                                <i class="fa fa-circle inventorydot"></i> På lager - 1-2 dages levering
+                                <div class="clearfix"></div>
+                            </div>
+
+
+                            <div class="normalprice" style="margin-top: 0px">
+                                <div class="left">Normalpris: 174 kr</div>
+                                <div class="right">-50%</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="memberprice">
+                                <div class="left">Medlemspris <i class="fal fa-question-circle" data-toggle="tooltip"
+                                                                 data-html="true" data-placement="top"
+                                                                 title="Pangos priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 7 dage er gratis"></i>
+                                </div>
+                                <div class="right">87 kr</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="clearfix"></div>
+                                <select class="form-control chooseVariant" style="display: none" required="true"
+                                        name="qty">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+
+                                <input type="hidden" name="id" value="770"/>
+
+
+                            </div>
+                            <input type="hidden" name="buy_type" value="1" checked id="check1"/>
+
+                            <div class="subinfo">Pangos priser gælder kun for medlemmer. Prisen for medlemskab er <b>139
+                                dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en
+                                medlemsperiode. Første 7 dage er gratis - <a href="../pages/how_it_works.html"
+                                                                             style="color: #2e2e2e">læs mere om
+                                    fordelene</a>.
+                            </div>
+
+
+                            <div class="row" style="margin-bottom: 15px">
+                                <div class="col-md-12">
+                                    <input type="hidden" name="variant_id" value="683"/>
+                                    <input type="hidden" name="variant_name" value="One Size"/>
+                                </div>
+                            </div>
+                            <button class="blue-button" name="add_to_cart" type="submit" value="1" style="width: 100%;">
+                                Læg i kurv
+                            </button>
+
+                            <div class="clearfix"></div>
+
+                            <div class="skiller"></div>
+
+                            <ul>
+                                <li>Gratis fragt på alle ordrer</li>
+                                <li>Spar op til 80% på vores produkter</li>
+                                <li>Prisgaranti</li>
+                            </ul>
+
+                            <div class="skiller"></div>
+
+                            <div class="delivery_info">Vi sender din ordre om <span id="countdown_product">-</span>
+                            </div>
+
+                            <center>
+                                <img src="../assets/v2/images/daologo.png"
+                                     style="margin-top: 20px; max-width: 100px; margin-right: 15px"/>
+                            </center>
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="col-sm-5 offset-sm-1">
-                <h2>Product Title: {{ product.title }}</h2>
-                <hr>
-                <p>{{ product.description }}</p> <br>
-                <h4>£. {{ product.discount_price }} <small
-                        class="fw-light text-decoration-line-through">£. {{ product.selling_price }}</small></h4><br>
-                {% if request.user.is_authenticated %}
-                    {% if item_already_in_cart %}
-                        <a href="{% url 'showcart' %}" class="btn btn-warning shadow px-2 py-2 ms-4">Go To Cart</a>
-                    {% else %}
+        </section>
+    </form>
+    <section class="products-list mt40">
+        <div class="container">
+            <div class="row">
 
-                        <form action="/add-to-cart" class="d-inline">
-                            <input type="hidden" name="prod_id" value="{{ product.id }}" id="prod_is">
-                            <button type="submit" class="btn btn-primary shadow px-2 py-2"> Add to Bag</button>
+                <div class="col-md-12"><h2>Måske <span>synes du også om</span></h2></div>
 
-                        </form>
-                    {% endif %}
-                {% endif %}
-                {% if not request.user.is_authenticated %}
-                    <form action="/add-to-cart" class="d-inline">
-                        <input type="hidden" name="prod_id" value="{{ product.id }}" id="prod_is">
-                        <button type="submit" class="btn btn-primary shadow px-2 py-2"> Add to Bag</button>
+                <div class="col-md-3 col-6">
+                    <a href="baeltetaske-the-avengers-71121-blaa.html">
+                        <div class="product">
+                            <center><img src="../uploads/baeltetaske-the-avengers-71121-blaa.jpg"
+                                         style="max-width: 90%;"/></center>
+                            <div class="pname">
+                                Bæltetaske The Avengers 71121 Blå
+                            </div>
 
-                    </form>
-                {% endif %}
+                            <div class="skiller"></div>
 
-                <a href="{% url 'checkout' %}" class="btn btn-danger shadow px-5 py-2 ms-4">Buy Now</a>
-                <h5 class="mt-5">Available Offers On Special Occassions...</h5>
-                <ul>
-                    <h6>The Inspiration</h6>
-                    <li>Inspired by the intricate beauty of trees, this collection features designs that are
-                        meticulously
-                        crafted using 3D printing technology.
-                    </li>
-                    <li>This design exudes elegance, and showcases the intricacy of curvaceous leaves of the tree.</li>
-                    <li>Perfect for a classy and elegant evening, that calls for a fabulous long gown.</li>
+                            <div class="normalprice">
+                                <div class="left">Normalpris: 136 kr</div>
+                                <div class="right">-50%</div>
 
-                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="memberprice">
+                                <div class="left">Medlemspris <i class="fal fa-question-circle" data-toggle="tooltip"
+                                                                 data-placement="top" data-html="true"
+                                                                 title="Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis"></i>
+                                </div>
+                                <div class="right">68 kr</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </a></div>
+                <div class="col-md-3 col-6">
+                    <a href="baeltetaske-minnie-mouse-73828.html">
+                        <div class="product">
+                            <center><img src="../uploads/baeltetaske-minnie-mouse-73828.jpg" style="max-width: 90%;"/>
+                            </center>
+                            <div class="pname">
+                                Bæltetaske Minnie Mouse 73828
+                            </div>
+
+                            <div class="skiller"></div>
+
+                            <div class="normalprice">
+                                <div class="left">Normalpris: 138 kr</div>
+                                <div class="right">-50%</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="memberprice">
+                                <div class="left">Medlemspris <i class="fal fa-question-circle" data-toggle="tooltip"
+                                                                 data-placement="top" data-html="true"
+                                                                 title="Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis"></i>
+                                </div>
+                                <div class="right">69 kr</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </a></div>
+                <div class="col-md-3 col-6">
+                    <a href="casual-rygsaek-harry-potter-72766-brun.html">
+                        <div class="product">
+                            <center><img src="../uploads/casual-rygsaek-harry-potter-72766-brun.jpg"
+                                         style="max-width: 90%;"/></center>
+                            <div class="pname">
+                                Casual Rygsæk Harry Potter 72766 Brun
+                            </div>
+
+                            <div class="skiller"></div>
+
+                            <div class="normalprice">
+                                <div class="left">Normalpris: 294 kr</div>
+                                <div class="right">-50%</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="memberprice">
+                                <div class="left">Medlemspris <i class="fal fa-question-circle" data-toggle="tooltip"
+                                                                 data-placement="top" data-html="true"
+                                                                 title="Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis"></i>
+                                </div>
+                                <div class="right">147 kr</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </a></div>
+                <div class="col-md-3 col-6">
+                    <a href="casual-rygsaek-frozen-72784-pink-graa.html">
+                        <div class="product">
+                            <center><img src="../uploads/casual-rygsaek-frozen-72784-pink-graa.jpg"
+                                         style="max-width: 90%;"/></center>
+                            <div class="pname">
+                                Casual Rygsæk Frozen 72784 Pink Grå
+                            </div>
+
+                            <div class="skiller"></div>
+
+                            <div class="normalprice">
+                                <div class="left">Normalpris: 282 kr</div>
+                                <div class="right">-50%</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="memberprice">
+                                <div class="left">Medlemspris <i class="fal fa-question-circle" data-toggle="tooltip"
+                                                                 data-placement="top" data-html="true"
+                                                                 title="Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis"></i>
+                                </div>
+                                <div class="right">141 kr</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </a></div>
+
+
             </div>
         </div>
-    </div>
-
+    </section>
 
 {% endblock body %}
