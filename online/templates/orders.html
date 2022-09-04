@@ -3,6 +3,7 @@
 {% block title %}Order Placed{% endblock title %}
 {% block body %}
     <div class="container my-5">
+    {% if payment_status == 'success' %}
         <div class="row">
             <h3>Welcome <span class="text-capitalize">{{ request.user }}</span></h3>
             <div class="col-sm-2 border-end">
@@ -65,5 +66,8 @@
                 {% endfor %}
             </div>
         </div>
+    {% else %}
+    <P>oops, something went wrong please try agins Thanks!</P>
+    {% endif %}
     </div>
 {% endblock body %}

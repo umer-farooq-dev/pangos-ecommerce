@@ -11,8 +11,8 @@
                 <h2>Product Title: {{ product.title }}</h2>
                 <hr>
                 <p>{{ product.description }}</p> <br>
-                <h4>£. {{ product.discount_price }} <small
-                        class="fw-light text-decoration-line-through">£. {{ product.selling_price }}</small></h4><br>
+                <h4>$. {{ product.discount_price }} <small
+                        class="fw-light text-decoration-line-through">$. {{ product.selling_price }}</small></h4><br>
                 {% if request.user.is_authenticated %}
                     {% if item_already_in_cart %}
                         <a href="{% url 'showcart' %}" class="btn btn-warning shadow px-2 py-2 ms-4">Go To Cart</a>
@@ -192,42 +192,42 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-12"><h2>Måske <span>synes du også om</span></h2></div>
-{#                {% for n in necklace %}#}
+                <div class="col-md-12"><h2>Maybe <span>you like it too </span></h2></div>
+                {% for n in necklace %}
 
-{#                    <div class="col-md-3 col-6">#}
-{#                    <a href="{% url 'product-detail' n.id %}">#}
-{#                        <div class="product">#}
-{#                            <center><img src="{{ n.product_image.url }}"#}
-{#                                         style="max-width: 90%;"/></center>#}
-{#                            <div class="pname">#}
-{#                                {{ n.title }}#}
-{#                            </div>#}
-{##}
-{#                            <div class="skiller"></div>#}
-{##}
-{#                            <div class="normalprice">#}
-{#                                <div class="left">Normalpris: {{ n.discount_price }} kr</div>#}
-{#                                <div class="right">-50%</div>#}
-{##}
-{#                                <div class="clearfix"></div>#}
-{#                            </div>#}
-{##}
-{#                            <div class="memberprice">#}
-{#                                <div class="left">Medlemspris <i class="fal fa-question-circle" data-toggle="tooltip"#}
-{#                                                                 data-placement="top" data-html="true"#}
-{#                                                                 title="Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis"></i>#}
-{#                                </div>#}
-{#                                <div class="right">{{ n.selling_price }} kr</div>#}
-{##}
-{#                                <div class="clearfix"></div>#}
-{#                            </div>#}
-{##}
-{#                            <div class="clearfix"></div>#}
-{##}
-{#                        </div>#}
-{#                    </a></div>#}
-{#                {% endfor %}#}
+                    <div class="col-md-3 col-6">
+                    <a href="{% url 'product-detail' n.id %}">
+                        <div class="product">
+                            <center><img src="{{ n.product_image.url }}"
+                                         style="max-width: 90%;"/></center>
+                            <div class="pname">
+                                {{ n.title }}
+                            </div>
+
+                            <div class="skiller"></div>
+
+                            <div class="normalprice">
+                                <div class="left">Normalpris: {{ n.discount_price }} kr</div>
+                                <div class="right">-50%</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="memberprice">
+                                <div class="left">Medlemspris <i class="fal fa-question-circle" data-toggle="tooltip"
+                                                                 data-placement="top" data-html="true"
+                                                                 title="Outletto priser gælder kun for medlemmer. Prisen for medlemskab er <b>139 dk/md</b> og fortsætter automatisk indtil det opsiges. Kan opsiges til udgangen af en medlemsperiode. Første 14 dage er gratis"></i>
+                                </div>
+                                <div class="right">{{ n.selling_price }} kr</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </a></div>
+                {% endfor %}
 
 
             </div>

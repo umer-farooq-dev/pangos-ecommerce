@@ -1,3 +1,15 @@
+Stripe keys:
+Publishable key: pk_test_51LQ9VsDIrD7ioqPGe6JvhjlXyazgY2OwmSuAIF3m4c72dXyNUd6ALjIAHjscbNZmEtLlHRD8RM36Uswyv3DOHNuW00JRtI85xU
+Secret key: sk_test_51LQ9VsDIrD7ioqPGmgOeD65iV00GMZP9zBuUAjYd6EvRtyJJMIdRMGgSVbmvMG3x3XuqL88Uk0BGRJd25xw8bfJc00dLjvxF0o
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 

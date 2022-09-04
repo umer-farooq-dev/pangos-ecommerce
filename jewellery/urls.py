@@ -9,9 +9,9 @@ from users import views as user_views
 from users.forms import LoginForm, MyPasswordChangeForm
 from users.views import account_verify, SignInView
 
-admin.site.site_header = "Traditional Jewellery Admin"
-admin.site.site_title = "Jewellery Admin Portal"
-admin.site.index_title = "Welcome to Traditional Jewellery Portal"
+admin.site.site_header = "Triiable Admin"
+admin.site.site_title = "Triiable Admin Portal"
+admin.site.index_title = "Welcome to Triiable Portal"
 
 urlpatterns = [
                   path('admin/', admin.site.urls),

@@ -19,7 +19,7 @@ def send_email(email, token):
         'Verify Email',
         f'Hi Click on the link to verify your account http://127.0.0.1:8000/account-verify/{token}',
         'ibsoft0786@gmail.com',
-        ['ufkeyfans786@gmail.com'],
+        [email],
         fail_silently=False,
         # subject="Verify Email",
         # message=f'Hi Click on the link to verify your account http://127.0.0.1:8000/account-verify/{token}',
