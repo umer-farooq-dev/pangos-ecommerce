@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect
 from django.shortcuts import render, HttpResponse
+from django.urls import reverse
 from django.views import View, generic
 from django.views.decorators.csrf import csrf_exempt
 
@@ -64,14 +65,14 @@ def checkout(request):
     return render(request, 'checkout.html', {'add': add, 'totalamount': totalamount, 'cart_items': cart_items})
 
 
-def get_context_data(self, **kwargs):
-    product = Product.objects.get(name="Test Product")
-    context = super(checkout, self).get_context_data(**kwargs)
-    context.update({
-        "product": product,
-        "STRIPE_PUBLIC_KEY": settings.STRIPE_PUBLIC_KEY
-    })
-    return context
+# def get_context_data(self, **kwargs):
+#     product = Product.objects.get(name="Test Product")
+#     context = super(checkout, self).get_context_data(**kwargs)
+#     context.update({
+#         "product": product,
+#         "STRIPE_PUBLIC_KEY": settings.STRIPE_PUBLIC_KEY
+#     })
+#     return context
 
 
 def address(request):
@@ -294,34 +295,30 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 class CheckoutSession(View):
     def post(self, request, *args, **kwargs):
-        product_id = self.kwargs["pk"]
-        product = Product.objects.get(id=product_id)
-        YOUR_DOMAIN = "http://127.0.0.1:8000"
+        host = self.request.get_host()
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=['card'],
             line_items=[
                 {
                     'price_data': {
                         'currency': 'usd',
-                        'unit_amount': product.selling_price,
+                        'unit_amount': 1000,
                         'product_data': {
-                            'name': product.title,
+                            'name': 'grocery: Mango',
                             # 'images': ['https://i.imgur.com/EHyR2nP.png'],
                         },
                     },
                     'quantity': 1,
                 },
             ],
-            metadata={
-                "product_id": product.id
-            },
+            # metadata={
+            #     "product_id": product.id
+            # },
             mode='payment',
-            success_url=YOUR_DOMAIN + '/success/',
-            cancel_url=YOUR_DOMAIN + '/cancel/',
+            success_url="http://{}{}".format(host, reverse('order:  payment-success')),
+            cancel_url="http://{}{}".format(host, reverse('order:  payment-cancel')),
         )
-        return JsonResponse({
-            'id': checkout_session.id
-        })
+        return redirect(checkout_session.url, code=303)
 
 
 def PaymentSuccess(request):
@@ -337,80 +334,79 @@ def PaymentCancel(request):
     }
     return render(request, "orders.html", context)
 
-
-@csrf_exempt
-def stripe_webhook(request):
-    payload = request.body
-    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
-    event = None
-
-    try:
-        event = stripe.Webhook.construct_event(
-            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
-        )
-    except ValueError as e:
-        # Invalid payload
-        return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError as e:
-        # Invalid signature
-        return HttpResponse(status=400)
-
-    # Handle the checkout.session.completed event
-    if event['type'] == 'checkout.session.completed':
-        session = event['data']['object']
-
-        customer_email = session["customer_details"]["email"]
-        product_id = session["metadata"]["product_id"]
-
-        product = Product.objects.get(id=product_id)
-
-        send_mail(
-            subject="Here is your product",
-            message=f"Thanks for your purchase. Here is the product you ordered. The URL is {product.url}",
-            recipient_list=[customer_email],
-            from_email="matt@test.com"
-        )
-
-        # TODO - decide whether you want to send the file or the URL
-
-    elif event["type"] == "payment_intent.succeeded":
-        intent = event['data']['object']
-
-        stripe_customer_id = intent["customer"]
-        stripe_customer = stripe.Customer.retrieve(stripe_customer_id)
-
-        customer_email = stripe_customer['email']
-        product_id = intent["metadata"]["product_id"]
-
-        product = Product.objects.get(id=product_id)
-
-        send_mail(
-            subject="Here is your product",
-            message=f"Thanks for your purchase. Here is the product you ordered. The URL is {product.url}",
-            recipient_list=[customer_email],
-            from_email="ibsoft0786@gmail.com"
-        )
-
-    return HttpResponse(status=200)
-
-
-class StripeIntentView(View):
-    def post(self, request, *args, **kwargs):
-        try:
-            req_json = json.loads(request.body)
-            customer = stripe.Customer.create(email=req_json['email'])
-            product_id = self.kwargs["pk"]
-            product = Product.objects.get(id=product_id)
-            intent = stripe.PaymentIntent.create(
-                amount=product.price,
-                currency='usd',
-                customer=customer['id'],
-                metadata={
-                    "product_id": product.id
-                }
-            )
-            return JsonResponse({
-                'clientSecret': intent['client_secret']
-            })
-        except Exception as e:
-            return JsonResponse({'error': str(e)})
+# @csrf_exempt
+# def stripe_webhook(request):
+#     payload = request.body
+#     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+#     event = None
+#
+#     try:
+#         event = stripe.Webhook.construct_event(
+#             payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+#         )
+#     except ValueError as e:
+#         # Invalid payload
+#         return HttpResponse(status=400)
+#     except stripe.error.SignatureVerificationError as e:
+#         # Invalid signature
+#         return HttpResponse(status=400)
+#
+#     # Handle the checkout.session.completed event
+#     if event['type'] == 'checkout.session.completed':
+#         session = event['data']['object']
+#
+#         customer_email = session["customer_details"]["email"]
+#         product_id = session["metadata"]["product_id"]
+#
+#         product = Product.objects.get(id=product_id)
+#
+#         send_mail(
+#             subject="Here is your product",
+#             message=f"Thanks for your purchase. Here is the product you ordered. The URL is {product.url}",
+#             recipient_list=[customer_email],
+#             from_email="matt@test.com"
+#         )
+#
+#         # TODO - decide whether you want to send the file or the URL
+#
+#     elif event["type"] == "payment_intent.succeeded":
+#         intent = event['data']['object']
+#
+#         stripe_customer_id = intent["customer"]
+#         stripe_customer = stripe.Customer.retrieve(stripe_customer_id)
+#
+#         customer_email = stripe_customer['email']
+#         product_id = intent["metadata"]["product_id"]
+#
+#         product = Product.objects.get(id=product_id)
+#
+#         send_mail(
+#             subject="Here is your product",
+#             message=f"Thanks for your purchase. Here is the product you ordered. The URL is {product.url}",
+#             recipient_list=[customer_email],
+#             from_email="ibsoft0786@gmail.com"
+#         )
+#
+#     return HttpResponse(status=200)
+#
+#
+# class StripeIntentView(View):
+#     def post(self, request, *args, **kwargs):
+#         try:
+#             req_json = json.loads(request.body)
+#             customer = stripe.Customer.create(email=req_json['email'])
+#             product_id = self.kwargs["pk"]
+#             product = Product.objects.get(id=product_id)
+#             intent = stripe.PaymentIntent.create(
+#                 amount=product.price,
+#                 currency='usd',
+#                 customer=customer['id'],
+#                 metadata={
+#                     "product_id": product.id
+#                 }
+#             )
+#             return JsonResponse({
+#                 'clientSecret': intent['client_secret']
+#             })
+#         except Exception as e:
+#             return JsonResponse({'error': str(e)})
